@@ -1,0 +1,78 @@
+{% extends 'base.html' %}
+{% block body %}
+
+
+<main class="content">
+    <div class="single">
+        {% if request.user.is_authenticated %}
+                      <p>Hello {{request.user}} </p>
+
+
+					{% endif %}
+        <div class="recentslider">
+            
+        <section class="trailer">
+            <h3>Trailer</h3>
+            <div class="trailer_frame">
+                <iframe width="560" height="315" src="{{object.chunks_trailer}}" frameborder="0" allowfullscreen></iframe>
+
+                <video  width="560" height="315" controls src ="/media/chunks/THE AMAZING.mp4"></video>
+                
+            </div>
+        </section>
+
+        <section class="chunks">
+            <img src="{{object.image.url}}">
+            <ul>
+                <li>{{object}}</li>
+                <li>{{object.decription}}</li>
+                  
+                </div>
+                <li><a href="genre.html">Adventure</a>, <a href="genre.html">Drama</a>, <a href="genre.html">Romance</a></li>
+                <li><a href="">{{object.cast}}</a></li>
+                <li>{{object.views_count}} Views</li>
+            </ul>
+        </section>
+        <section class="links">
+            <h3>Links</h3>
+            <ul class="dlinks">
+                <li><a>Download</a></li>
+                
+                {% for link in links  %}
+                    {% if link.type == 'D' %}
+                    <li><a href="{{link.link}}">link{{forloop.counter}}</a></li>
+                    {% endif %}
+                {% endfor %}
+                    
+                
+            </ul>
+            <ul class="wlinks">
+                <li><a>Watch</a></li>
+                {% for link in links  %}
+                    {% if link.type == 'W' %}
+                    <li><a href="{{link.link}}">link{{forloop.counter}}</a></li>
+                    {% endif %}
+                {% endfor %}
+
+            </ul>
+        </section>
+
+        <section class="related">
+            <h3>Related movies</h3>
+            
+            {% for chunks in related_movies %}
+                <div class="relatedchunks">
+                    <a href="{% url 'chunks:chunks_detail' chunks.slug %}"><img src="{{chunks.image.url}}"></a>
+                    <a href="{% url 'chunks:chunks_detail' chunks.slug %}"><span class="relatedname">{{chunks.title}}</span></a>
+                </div>
+            {% endfor %}
+
+        </section>
+
+
+    </div>
+</main>
+
+             <a href="{% url 'logout' %}" class="btn btn-dark btn-block btn-sm m-1">Logout</a>
+{% endblock body%}   
+     
