@@ -6,39 +6,30 @@
 
 		<main class="content">
 			<section class="panel">
-				<h2>Recently Added</h2>
-				<div class="recentslider">
+				<div class="recentslider row" style="margin: 15px;">
 					{% if request.user.is_authenticated %}
-                      <p>Hello {{request.user}} </p>
+                      <p class="alert alert-success alert-sm">Hello {{request.user}} </p>
 
 
 					{% endif %}
-					<div class="swiper-container">
-						<div class="swiper-wrapper">
-                            {% for chunks in recently_added %} 
-							    <div class="swiper-slide"><a href="single.html"><img src="{{chunks.image.url}}"><h3 class="hometitle">{{chunks.title}}</h3></a></div>
-                            {% endfor %}
-							<div class="swiper-slide"><a href="mostwatched.html"><img src="{% static 'img/others.png' %}"></a></div>
-						</div>
-						<div class="nextdirection recent-next"><img src="{% static 'img/right-arrow.svg' %}"> </div>
-						<div class="leftdirection recent-prev"><img src="{% static 'img/left-arrow.svg' %}"> </div>
-					</div>
+					
 				</div>
 			</section>
 
 			<section class="panel">
-				<h2>Most Watched</h2>
-				<div class="mostslider">
-					<div class="swiper-container">
-						<div class="swiper-wrapper">
-                            {% for chunks in most_watched %} 
-							    <div class="swiper-slide"><a href="single.html"><img src="{{chunks.image.url}}"><h3 class="hometitle">{{chunks.title}}</h3></a></div>
-                            {% endfor %}
-							<div class="swiper-slide"><a href="mostwatched.html"><img src="{% static 'img/others.png' %}"></a></div>
+				<div style="margin: 15px;">
+					<h2>Most Watched</h2>
+					<div class="mostslider">
+						<div class="swiper-container">
+							<div class="swiper-wrapper row">
+									{% for chunks in most_watched %} 
+									<div class="col-md-4">
+										<a href="#"><img src="{{chunks.image.url}}" class="img-thumbnail"><h4 class="hometitle">{{chunks.title}}</h4></a>
+									</div>
+									{% endfor %}
+							</div>
+							<!-- Add Pagination -->
 						</div>
-						<div class="nextdirection most-next"><img src="{% static 'img/right-arrow.svg' %}"> </div>
-						<div class="leftdirection most-prev"><img src="{% static 'img/left-arrow.svg' %}"> </div>
-						<!-- Add Pagination -->
 					</div>
 				</div>
 			</section>
@@ -47,15 +38,13 @@
 				<h2>Top Rated</h2>
 				<div class="topslider">
 					<div class="swiper-container">
-						<div class="swiper-wrapper">
-                            
-                            {% for chunks in top_rated %}  
-							    <div class="swiper-slide"><a href="single.html"><img src="{{chunks.image.url}}"><h3 class="hometitle">{{chunks.title}}</h3></a></div>
-                            {% endfor %}
-							<div class="swiper-slide"><a href="mostwatched.html"><img src="{% static 'img/others.png' %}"></a></div>
+						<div class="swiper-wrapper row">
+							{% for chunks in top_rated %} 
+							<div class="col-md-3">
+								<a href="#"><img src="{{chunks.image.url}}" class="img-thumbnail"><h4 class="hometitle">{{chunks.title}}</h4></a>
+							</div>
+							{% endfor %}
 						</div>
-						<div class="nextdirection top-next"><img src="{% static 'img/right-arrow.svg' %}"> </div>
-						<div class="leftdirection top-prev"><img src="{% static 'img/left-arrow.svg' %}"> </div>
 						<!-- Add Pagination -->
 					</div>
 				</div>

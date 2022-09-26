@@ -1,11 +1,9 @@
 {% extends 'base.html' %}
 {% block body %}
 		<main class="content">
-			<section class="centered">
+			<section class="centered row" style="margin: 15px;">
                 {% if request.user.is_authenticated %}
                       <p>Hello {{request.user}} </p>
-
-
 					{% endif %}
 
                 {% if chunks_category %}
@@ -16,9 +14,9 @@
                     <h3>{{chunks_language|title}} chunk</h3>
                 {% endif %}
 
-				<div class="chunk">
+				<div class="chunk row">
                     {% for chunks in object_list %}
-                        <div class="mov">
+                        <div class="mov col-md-3">
                             <a href="{% url 'chunks:chunks_detail' chunks.slug %}">
                                 <img src="{{chunks.image.url}}">
                                 <h2 class="chunkstitle">{{chunks.title}}</h2>

@@ -6,29 +6,29 @@
     <div class="single">
         {% if request.user.is_authenticated %}
                       <p>Hello {{request.user}} </p>
-
-
-					{% endif %}
+        {% endif %}
         <div class="recentslider">
             
         <section class="trailer">
             <h3>Trailer</h3>
-            <div class="trailer_frame">
-                <iframe width="560" height="315" src="{{object.chunks_trailer}}" frameborder="0" allowfullscreen></iframe>
-
-                <video  width="560" height="315" controls src ="/media/chunks/THE AMAZING.mp4"></video>
-                
+            <div class="trailer_frame row">
+                <div class="col-md-6">
+                    <iframe width="560" height="315" src="{{object.chunks_trailer}}" frameborder="0" allowfullscreen></iframe>
+                </div>
+                <div class="col-md-6">
+                    <video  width="560" height="315" controls src ="/media/chunks/THE AMAZING.mp4"></video>
+                </div>
             </div>
         </section>
 
-        <section class="chunks">
-            <img src="{{object.image.url}}">
+        <section class="chunks row" style="margin-top: 15px;">
+            <img src="{{object.image.url}}" class="img-thumbnail">
             <ul>
                 <li>{{object}}</li>
                 <li>{{object.decription}}</li>
                   
                 </div>
-                <li><a href="genre.html">Adventure</a>, <a href="genre.html">Drama</a>, <a href="genre.html">Romance</a></li>
+                <li><a href="#">Adventure</a>, <a href="#">Drama</a>, <a href="#">Romance</a></li>
                 <li><a href="">{{object.cast}}</a></li>
                 <li>{{object.views_count}} Views</li>
             </ul>
