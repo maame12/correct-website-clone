@@ -71,7 +71,7 @@ def registerUser(request):
 
 
 class HomeView(LoginRequiredMixin, ListView):
-    login_url = '/login/'
+    login_url = 'login'
     redirect_field_name = 'redirect_to'
     template_name = 'chunks/home.html'
     model = chunks
